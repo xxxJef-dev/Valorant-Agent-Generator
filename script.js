@@ -38,6 +38,3 @@ function getRandomAgent() {
     document.querySelector('#agent-name').textContent = randomAgent;
   }
 }
-
-
-
