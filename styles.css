@@ -39,8 +39,55 @@ body {
   justify-content: center;
 }
 
+.agent-container {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 1rem;
+}
+
+.agent-desc {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  padding: 0 20px;
+
+}
+
 #agent-name {
-  font-size: 2em;
+  display: block;
+  font-size: 5em;
+  font-weight: 600;
+  margin: 10px 0;
+  text-align: start;
+  
+}
+
+#agent-role {
+  font-size: 1em;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+#agent-bio {
+  font-size: 1em;
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* Number of lines to display */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.role-title {
+  font-size: 1em;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.bio-title {
+  font-size: 1em;
   font-weight: 600;
   margin: 10px 0;
 }
@@ -93,4 +140,16 @@ footer p {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #DF3045;
+}
+
+@media screen and (max-width: 1080px) {
+  .agent-container {
+    display: block; /* Change to block on small screens */
+  }
+  #agent-name {
+    font-size: 3em;
+  }
+  #agent-img {
+    height: 300px;
+  }
 }

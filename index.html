@@ -20,8 +20,16 @@
     </div>
   </nav>
   <div class="main-container container-fluid">
-    <img src="img/Cypher.png" class="img-fluid" id="agent-img">
-    <h2 id="agent-name">Cypher</h2>
+    <div class="agent-container">
+      <h2 id="agent-name">Cypher</h2>
+      <img src="img/Cypher.png" class="img-fluid" id="agent-img">
+      <div class="agent-desc">
+        <h2 class="role-title">// ROLE</h2>
+        <h2 id="agent-role">Sentinel</h2>
+        <h2 class="bio-title">// BIOGRAPHY</h2>
+        <h2 id="agent-bio">The Moroccan information broker, Cypher is a one-man surveillance network who keeps tabs on the enemy's every move. No secret is safe. No maneuver goes unseen. Cypher is always watching.</h2>
+      </div>
+    </div>
     <button class="btn btn-danger" id="pick">Pick</button>
     <div>
     <select class="select" id="filter" onchange="filterAgents()">
