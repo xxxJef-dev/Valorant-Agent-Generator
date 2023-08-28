@@ -54,6 +54,8 @@ const agentBio = {
   'Gekko': "Gekko the Angeleno leads a tight-knit crew of calamitous creatures. His buddies bound forward, scattering enemies out of the way, with Gekko chasing them down to regroup and go again."
 }
 
+
+
 pickBtn.addEventListener('click', getRandomAgent);
 
 function filterAgents() {
@@ -63,36 +65,80 @@ function filterAgents() {
 }
 
 function getRandomAgent() {
+  const agentDetailsContainer = document.querySelector('.agent-container');
+  agentDetailsContainer.style.display = 'none';
 
-  if (filterAgents() === 'Initiator') {
-    const randomAgent = initiator[Math.floor(Math.random() * initiator.length)];
-    document.querySelector('#agent-img').src = `./img/${randomAgent}.png`;
-    document.querySelector('#agent-name').textContent = randomAgent;
-    document.querySelector('#agent-role').textContent = agentRole[randomAgent];
-    document.querySelector('#agent-bio').textContent = agentBio[randomAgent];
-  } else if (filterAgents() === 'Controller') {
-    const randomAgent = contoller[Math.floor(Math.random() * contoller.length)];
-    document.querySelector('#agent-img').src = `./img/${randomAgent}.png`;
-    document.querySelector('#agent-name').textContent = randomAgent;
-    document.querySelector('#agent-role').textContent = agentRole[randomAgent];
-    document.querySelector('#agent-bio').textContent = agentBio[randomAgent];
-  } else if (filterAgents() === 'Duelist') {
-    const randomAgent = duelist[Math.floor(Math.random() * duelist.length)];
-    document.querySelector('#agent-img').src = `./img/${randomAgent}.png`;
-    document.querySelector('#agent-name').textContent = randomAgent;
-    document.querySelector('#agent-role').textContent = agentRole[randomAgent];
-    document.querySelector('#agent-bio').textContent = agentBio[randomAgent];
-  } else if (filterAgents() === 'Sentinel') {
-    const randomAgent = sentinel[Math.floor(Math.random() * sentinel.length)];
-    document.querySelector('#agent-img').src = `./img/${randomAgent}.png`;
-    document.querySelector('#agent-name').textContent = randomAgent;
-    document.querySelector('#agent-role').textContent = agentRole[randomAgent];
-    document.querySelector('#agent-bio').textContent = agentBio[randomAgent];
-  } else {
-    const randomAgent = agents[Math.floor(Math.random() * agents.length)];
-    document.querySelector('#agent-img').src = `./img/${randomAgent}.png`;
-    document.querySelector('#agent-name').textContent = randomAgent;
-    document.querySelector('#agent-role').textContent = agentRole[randomAgent];
-    document.querySelector('#agent-bio').textContent = agentBio[randomAgent];
-  }
+  const loadingContainer = document.querySelector('.loading-container');
+  loadingContainer.style.display = 'block';
+
+  const buttonsContainer = document.querySelector('.buttons-container');
+  buttonsContainer.style.display = 'none'; // Hide buttons during loading
+
+   setTimeout(() => {
+    // Hide the loading animation
+    loadingContainer.style.display = 'none';
+    // Show agent details container
+    agentDetailsContainer.style.display = 'grid';
+    buttonsContainer.style.display = 'block'; // Display buttons after loading
+
+    if (filterAgents() === 'Initiator') {
+      const randomAgent = initiator[Math.floor(Math.random() * initiator.length)];
+      document.querySelector('#agent-img').src = `./img/${randomAgent}.png`;
+      document.querySelector('#agent-name').textContent = randomAgent;
+      document.querySelector('#agent-role').textContent = agentRole[randomAgent];
+      document.querySelector('#agent-bio').textContent = agentBio[randomAgent];
+    } else if (filterAgents() === 'Controller') {
+      const randomAgent = contoller[Math.floor(Math.random() * contoller.length)];
+      document.querySelector('#agent-img').src = `./img/${randomAgent}.png`;
+      document.querySelector('#agent-name').textContent = randomAgent;
+      document.querySelector('#agent-role').textContent = agentRole[randomAgent];
+      document.querySelector('#agent-bio').textContent = agentBio[randomAgent];
+    } else if (filterAgents() === 'Duelist') {
+      const randomAgent = duelist[Math.floor(Math.random() * duelist.length)];
+      document.querySelector('#agent-img').src = `./img/${randomAgent}.png`;
+      document.querySelector('#agent-name').textContent = randomAgent;
+      document.querySelector('#agent-role').textContent = agentRole[randomAgent];
+      document.querySelector('#agent-bio').textContent = agentBio[randomAgent];
+    } else if (filterAgents() === 'Sentinel') {
+      const randomAgent = sentinel[Math.floor(Math.random() * sentinel.length)];
+      document.querySelector('#agent-img').src = `./img/${randomAgent}.png`;
+      document.querySelector('#agent-name').textContent = randomAgent;
+      document.querySelector('#agent-role').textContent = agentRole[randomAgent];
+      document.querySelector('#agent-bio').textContent = agentBio[randomAgent];
+    } else {
+      const randomAgent = agents[Math.floor(Math.random() * agents.length)];
+      document.querySelector('#agent-img').src = `./img/${randomAgent}.png`;
+      document.querySelector('#agent-name').textContent = randomAgent;
+      document.querySelector('#agent-role').textContent = agentRole[randomAgent];
+      document.querySelector('#agent-bio').textContent = agentBio[randomAgent];
+    }
+    // Function to handle responsiveness
+    function handleResponsive() {
+      const agentContainer = document.querySelector('.agent-container');
+      const agentName = document.querySelector('#agent-name');
+      const agentImg = document.querySelector('#agent-img');
+
+      if (window.innerWidth <= 1080) {
+        // Adjust styles for smaller screens
+        agentContainer.style.display = 'block'; // Change to "block"
+        agentName.style.fontSize = '3em';
+        agentImg.style.height = '300px';
+      } else {
+        // Reset styles for larger screens
+        agentContainer.style.display = 'grid'; // Change back to "grid"
+        agentName.style.fontSize = '5em';
+        agentImg.style.height = '500px';
+      }
+    }
+
+    // Call the responsive function initially
+    handleResponsive();
+
+    // Listen for window resize events and update responsiveness
+    window.addEventListener('resize', handleResponsive);
+
+  }, 1500); // Adjust the time as needed
 }
+
+
+

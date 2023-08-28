@@ -1,6 +1,6 @@
 *, *::after, *::before {
-    box-sizing: border-box;
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 body {
@@ -8,6 +8,10 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: #fff;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Make the body a flex container */
+  min-height: 100vh; /* Ensure the body takes up at least the viewport height */
 }
 
 /* Navigation Bar */
@@ -27,16 +31,70 @@ body {
   margin-left: 20px;
 }
 
+/* Loading Container */
+.loading-container {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-animation {
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-family: helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+.loading-animation::before,
+.loading-animation::after {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: #DC3545;
+  position: absolute;
+  animation: load 0.9s infinite alternate ease-in-out;
+}
+.loading-animation::before {
+  top: 0;
+}
+.loading-animation::after {
+  bottom: 0;
+}
+
+@keyframes load {
+  0% {
+    left: 0;
+    height: 30px;
+    width: 15px;
+  }
+  50% {
+    height: 8px;
+    width: 40px;
+  }
+  100% {
+    left: 235px;
+    height: 30px;
+    width: 15px;
+  }
+}
+
 /* Container */
 .main-container {
+  flex: 1; /* Allow the main container to expand to fill the available space */
   display: block;
-  background: url(/img/bg.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: url(/img/bg.png) center/cover no-repeat;
   padding: 30px 0 1px 0;
   text-align: center;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .agent-container {
@@ -52,7 +110,6 @@ body {
   flex-direction: column;
   text-align: start;
   padding: 0 20px;
-
 }
 
 #agent-name {
@@ -61,7 +118,6 @@ body {
   font-weight: 600;
   margin: 10px 0;
   text-align: start;
-  
 }
 
 #agent-role {
@@ -73,11 +129,6 @@ body {
 #agent-bio {
   font-size: 1em;
   font-weight: 400;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; /* Number of lines to display */
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .role-title {
@@ -96,15 +147,18 @@ body {
   height: 500px;
 }
 
+/* Buttons */
 #pick {
   height: 50px;
   width: 200px;
+  margin-top: 15px; /* Add margin to separate from loading animation */
 }
 
 select {
   margin-top: 10px;
   width: 200px;
   height: 30px;
+  margin-bottom: 15px;
 }
 
 /* Footer */
@@ -112,12 +166,13 @@ footer {
   font-size: 13px;
   font-size: 1.3rem;
   line-height: 1;
-  padding: 100px 0 0;
   text-align: center;
+  width: 100%;
+  padding: 20px 0;
+  color: #fff; /* Set text color for the footer */
 }
 
 footer a {
-  display: inline-block;
   margin: 0 5px;
 }
 
