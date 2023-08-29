@@ -21,6 +21,9 @@
     </div>
   </nav>
   <div class="main-container container-fluid">
+    <video autoplay loop muted playsinline class="video-bg">
+      <source src="/vid/bg.mp4" type="video/mp4">
+    </video>
     <div class="loading-container">
       <div class="loading-animation">Loading...</div>
 
@@ -36,7 +39,7 @@
         </div>
     </div>
     <div class="buttons-container">
-      <button class="btn btn-danger" id="pick">Pick</button>
+      <button class="btn btn-danger" id="pick">Generate</button>
       <div>
       <select class="select" id="filter" onchange="filterAgents()">
         <option selected>Random</option>
